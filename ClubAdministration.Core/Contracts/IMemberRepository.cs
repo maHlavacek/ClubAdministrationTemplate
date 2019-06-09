@@ -5,5 +5,6 @@ namespace ClubAdministration.Core.Contracts
 {
     public interface IMemberRepository
     {
+        Member GetMemberById(int id);
     }
 }

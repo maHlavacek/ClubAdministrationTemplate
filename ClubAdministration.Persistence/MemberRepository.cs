@@ -14,6 +14,11 @@ namespace ClubAdministration.Persistence
         {
             _dbContext = dbContext;
         }
+
+        public Member GetMemberById(int id)
+        {
+           return _dbContext.Members.Single(m => m.Id == id);
+        }
     }
 
 }

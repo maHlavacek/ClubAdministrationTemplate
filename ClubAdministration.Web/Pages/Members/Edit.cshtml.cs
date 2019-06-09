@@ -27,12 +27,39 @@ namespace ClubAdministration.Web.Pages.Members
 
         public IActionResult OnGet(int? id)
         {
-            throw new NotImplementedException();
+            if(id == null)
+            {
+                return NotFound();
+            }
+            Member = _unitOfWork.MemberRepository.GetMemberById((int)id);
+            return Page();
         }
 
         public IActionResult OnPost()
         {
-            throw new NotImplementedException();
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            Member member = new Member
+            {
+                FirstName = Member.FirstName,
+                LastName = Member.LastName,
+                Id = Member.Id,
+                MemberSections = Member.MemberSections
+            };
+
+            try
+            {
+                _unitOfWork.SaveChanges();
+            }
+            catch (ValidationException ex)
+            {
+                throw new ValidationException(ex.Message);
+            }
+
+            return RedirectToPage("/Pages/Index");           
         }
 
     }
