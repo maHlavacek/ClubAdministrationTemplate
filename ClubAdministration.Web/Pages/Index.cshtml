@@ -9,22 +9,56 @@
 
 <form method="post">
     <div>
-        <label asp-for="@Model.SectionId" class="control-label"></label>
-        <select asp-for="SectionId" class="form-control" asp-items="@Model.SectionItems"></select>
-        <input asp-for="@Model.SectionId" type="hidden"/>
-       @* <a asp-route-id="@Model.SectionId">Submit</a>*@
+        <div>
+            <label asp-for="@Model.SectionId" class="control-label"></label>
+            <select asp-for="SectionId" class="form-control" asp-items="@Model.SectionItems"></select>
+            <input asp-for="@Model.SectionId" type="hidden" />
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
     </div>
-    @*<div>
-        @foreach(var item in )
-    </div>*@
-
 </form>
 
-<script>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Members[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Members[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Members[0].CountSections)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.Members != null)
+            {
+                foreach (var item in Model.Members)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FirstName)
+                        </td>
+                        <th>
+                            @Html.DisplayFor(model => item.CountSections)
+                        </th>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+
+@*<script>
     function DoPostBack() {
         document.formIndex.submit();
     }
-</script>
+</script>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
