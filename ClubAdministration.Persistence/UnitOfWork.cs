@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using ClubAdministration.Core.Contracts;
 using ClubAdministration.Core.Entities;
+using ClubAdministration.Persistence.Validations;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClubAdministration.Persistence
@@ -12,6 +13,8 @@ namespace ClubAdministration.Persistence
     {
         private readonly ApplicationDbContext _dbContext;
         private bool _disposed;
+        private readonly DublicateValidation _duplicateValidation;
+
 
         public UnitOfWork()
         {
@@ -19,11 +22,13 @@ namespace ClubAdministration.Persistence
             MemberRepository = new MemberRepository(_dbContext);
             SectionRepository = new SectionRepository(_dbContext);
             MemberSectionRepository = new MemberSectionRepository(_dbContext);
+            _duplicateValidation = new DublicateValidation(this);
         }
 
         public IMemberRepository MemberRepository { get; }
         public ISectionRepository SectionRepository { get; }
         public IMemberSectionRepository MemberSectionRepository { get; }
+
 
 
         /// <summary>

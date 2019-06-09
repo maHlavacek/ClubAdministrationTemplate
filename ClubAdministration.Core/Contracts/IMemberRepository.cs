@@ -6,5 +6,6 @@ namespace ClubAdministration.Core.Contracts
     public interface IMemberRepository
     {
         Member GetMemberById(int id);
+        bool HasDublicateMember(string firstName, string lastName);
     }
 }
