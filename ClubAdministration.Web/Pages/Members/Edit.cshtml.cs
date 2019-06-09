@@ -31,7 +31,16 @@ namespace ClubAdministration.Web.Pages.Members
             {
                 return NotFound();
             }
-            Member = _unitOfWork.MemberRepository.GetMemberById((int)id);
+            var member = _unitOfWork.MemberRepository.GetMemberById((int)id);
+
+            Member = new Member
+            {
+                FirstName = member.FirstName,
+                LastName = member.LastName,
+                Id = member.Id,
+                MemberSections = member.MemberSections,
+                RowVersion = member.RowVersion
+            };
             return Page();
         }
 
@@ -42,13 +51,11 @@ namespace ClubAdministration.Web.Pages.Members
                 return BadRequest();
             }
 
-            Member member = new Member
-            {
-                FirstName = Member.FirstName,
-                LastName = Member.LastName,
-                Id = Member.Id,
-                MemberSections = Member.MemberSections
-            };
+
+            Member dbMember = _unitOfWork.MemberRepository.GetMemberById(Member.Id);
+            dbMember.FirstName = Member.FirstName;
+            dbMember.LastName = Member.LastName;
+            dbMember.RowVersion = Member.RowVersion;
 
             try
             {
@@ -59,7 +66,7 @@ namespace ClubAdministration.Web.Pages.Members
                 throw new ValidationException(ex.Message);
             }
 
-            return RedirectToPage("/Pages/Index");           
+            return RedirectToPage("/Index");           
         }
 
     }

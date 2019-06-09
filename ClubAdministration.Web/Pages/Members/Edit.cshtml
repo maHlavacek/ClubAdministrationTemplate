@@ -8,22 +8,24 @@
 <h2>Edit Member</h2>
 
 <hr />
-<form method="post">
-    <div class="form-group">
-        <input asp-for="@Model.Member.Id" type="hidden" />
-        <label asp-for="@Model.Member.FirstName" class="control-label"></label>
-        <input asp-for="@Model.Member.FirstName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Member.LastName" class="control-label"></label>
-        <input asp-for="@Model.Member.LastName" class="form-control" />
-    </div>
-    <div>
-        <a asp-route-id="@Model.Member.Id" class="btn btn-default">Save</a>
-    </div>
-</form>
+    <form method="post">
+        <div class="form-group">
+            <input asp-for="@Model.Member.Id" type="hidden" />
+            <label asp-for="@Model.Member.FirstName" class="control-label"></label>
+            <input asp-for="@Model.Member.FirstName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Member.LastName" class="control-label"></label>
+            <input asp-for="@Model.Member.LastName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Save" />
+        </div>
+    </form>
 
-<a asp-page="/Pages/Index">Back to List</a>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
 
 
 @section Scripts {
