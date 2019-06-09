@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using ClubAdministration.Core.Contracts;
+using ClubAdministration.Core.DataTransferObjects;
 using ClubAdministration.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,17 @@ namespace ClubAdministration.Persistence
         public void AddRange(MemberSection[] memberSections)
         {
             _dbContext.MemberSections.AddRange(memberSections);
+        }
+
+        public MemberDTO[] GetMembersBySectionId(int id)
+        {
+           return _dbContext.MemberSections.Where(w => w.SectionId==id).Select(s => new MemberDTO
+                  {
+                      FirstName = s.Member.FirstName,
+                      LastName = s.Member.LastName,
+                      SectionId = s.SectionId
+                  })
+                  .ToArray();
         }
     }
 }

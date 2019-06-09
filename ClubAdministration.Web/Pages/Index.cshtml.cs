@@ -19,9 +19,20 @@ namespace ClubAdministration.Web.Pages
         /// <param name="unitOfWork"></param>
         /// 
         [BindProperty]
-        public MemberSection MemberSection { get; set; }
+        public int SectionId { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public MemberDTOs[] Members { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public List<SelectListItem> SectionItems { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public IndexModel(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -40,6 +51,7 @@ namespace ClubAdministration.Web.Pages
                                                 item.Name, 
                                                 item.Id.ToString())
                                                 ).ToList();
+           // Members = _unitOfWork.MemberSectionRepository.GetMembersBySectionId(SectionId).ToArray();
             return Page();
         }
         /// <summary>
