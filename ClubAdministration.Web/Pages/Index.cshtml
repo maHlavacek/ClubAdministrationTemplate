@@ -7,6 +7,19 @@
 <h2>Members of section</h2>
 <hr />
 
+<form method="post">
+    <div>
+        <label asp-for="@Model.MemberSection" class="control-label"></label>
+        <select asp-for="@Model.MemberSection.SectionId" asp-items="@Model.SectionItems"></select>
+        <input asp-for="@Model.MemberSection.SectionId" type="hidden"/>
+        <a asp-route-id="@Model.MemberSection.Id">Submit</a>
+    </div>
+    @*<div>
+        @foreach(var item in )
+    </div>*@
+
+</form>
+
 <script>
     function DoPostBack() {
         document.formIndex.submit();

@@ -13,5 +13,9 @@ namespace ClubAdministration.Persistence
             _dbContext = dbContext;
         }
 
+        public Section[] GetAll()
+        {
+            return _dbContext.Sections.ToArray();
+        }
     }
 }
