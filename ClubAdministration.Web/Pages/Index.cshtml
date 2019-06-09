@@ -44,9 +44,12 @@
                         <td>
                             @Html.DisplayFor(model => item.FirstName)
                         </td>
-                        <th>
+                        <td>
                             @Html.DisplayFor(model => item.CountSections)
-                        </th>
+                        </td>
+                        <td>
+                            <a asp-page="/Members/Edit" asp-route-id="@item.MemberId">Edit Member</a>
+                        </td>
                     </tr>
                 }
             }

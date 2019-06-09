@@ -27,7 +27,8 @@ namespace ClubAdministration.Persistence
                       FirstName = s.Member.FirstName,
                       LastName = s.Member.LastName,
                       SectionId = s.SectionId,
-                      CountSections = s.Member.MemberSections.Count()
+                      CountSections = s.Member.MemberSections.Count(),
+                      MemberId = s.MemberId
                   })
                   .OrderBy(o => o.LastName)
                   .ToArray();

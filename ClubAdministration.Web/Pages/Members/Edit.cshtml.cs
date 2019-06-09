@@ -17,6 +17,9 @@ namespace ClubAdministration.Web.Pages.Members
     {
         private readonly IUnitOfWork _unitOfWork;
 
+        [BindProperty]
+        public Member Member { get; set; }
+
         public EditModel(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

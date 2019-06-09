@@ -10,5 +10,7 @@ namespace ClubAdministration.Core.DataTransferObjects
         public string LastName { get; set; }
         public int SectionId { get; set; }
         public int CountSections { get; set; }
+
+        public int MemberId { get; set; }
     }
 }
