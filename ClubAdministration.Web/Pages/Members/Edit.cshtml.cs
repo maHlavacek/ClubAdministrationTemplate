@@ -60,14 +60,13 @@ namespace ClubAdministration.Web.Pages.Members
             try
             {
                 _unitOfWork.SaveChanges();
+                return RedirectToPage("/Index");
             }
             catch (ValidationException ex)
             {
-                throw new ValidationException(ex.Message);
+                ModelState.AddModelError("",ex.Message);
             }
-
-            return RedirectToPage("/Index");           
+            return Page();
         }
-
     }
 }

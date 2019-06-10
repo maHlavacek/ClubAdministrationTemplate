@@ -22,7 +22,7 @@ namespace ClubAdministration.Persistence.Validations
                 throw new ArgumentException("Value is not a Member",nameof(value));
             }
 
-            if (_unitOfWork.MemberRepository.HasDublicateMember(member.FirstName, member.LastName))
+            if (_unitOfWork.MemberRepository.HasDublicateMember(member))
             {
                 return new ValidationResult("Es existiert bereits ein Mitglied mit dem Namen");
             }

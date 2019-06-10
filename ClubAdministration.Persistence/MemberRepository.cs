@@ -15,9 +15,9 @@ namespace ClubAdministration.Persistence
             _dbContext = dbContext;
         }
 
-        public bool HasDublicateMember(string firstName, string lastName)
+        public bool HasDublicateMember(Member member)
         {
-            return _dbContext.Members.Any(m => m.FirstName == firstName && m.LastName == lastName);
+            return _dbContext.Members.Any(m => m.FirstName == member.FirstName && m.LastName == member.LastName);
         }
 
         public Member GetMemberById(int id)

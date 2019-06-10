@@ -76,6 +76,14 @@ namespace ClubAdministration.Persistence
 
         private void ValidateEntity(object entity)
         {
+            ValidationResult result = null;
+
+            result =_duplicateValidation.GetValidationResult(entity, new ValidationContext(entity));
+
+            if(result != ValidationResult.Success || result != null)
+            {
+                throw new ValidationException(result, _duplicateValidation, entity);
+            }
         }
 
     }
