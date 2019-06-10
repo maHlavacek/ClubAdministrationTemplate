@@ -33,7 +33,7 @@ namespace ClubAdministration.Web.ApiControllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<string[]> GetLockerNumbers()
         {
-            throw  new NotImplementedException();
+            return _unitOfWork.MemberRepository.GetAll();
         }
 
 

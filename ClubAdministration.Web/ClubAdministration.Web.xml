@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClubAdministration.Web</name>
+    </assembly>
+    <members>
+        <member name="T:ClubAdministration.Web.ApiControllers.MembersController">
+            <summary>
+            API-Controller für die Abfrage von Mitgliedern
+            </summary>
+        </member>
+        <member name="M:ClubAdministration.Web.ApiControllers.MembersController.#ctor(ClubAdministration.Core.Contracts.IUnitOfWork)">
+            <summary>
+            Constructor mit DI
+            </summary>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:ClubAdministration.Web.ApiControllers.MembersController.GetLockerNumbers">
+            <summary>
+            Liefert alle Namen der Mitglieder
+            </summary>
+            <response code="200">Die Abfrage war erfolgreich.</response>
+        </member>
+        <member name="M:ClubAdministration.Web.ApiControllers.MembersController.Get(System.String,System.String)">
+            <summary>
+            Spezialroute zum Abfragen von Sektionen eines Mitglieds
+            </summary>
+            <param name="lastName"></param>
+            <param name="firstName"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

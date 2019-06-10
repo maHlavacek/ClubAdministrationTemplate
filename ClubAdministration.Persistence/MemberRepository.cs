@@ -24,6 +24,14 @@ namespace ClubAdministration.Persistence
         {
            return _dbContext.Members.Single(m => m.Id == id);
         }
+
+        public string[] GetAll()
+        {
+            return _dbContext.Members
+                    .OrderBy(o => o.LastName)
+                    .Select(m => m.LastName + " " + m.FirstName)
+                    .ToArray();
+        }
     }
 
 }

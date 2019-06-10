@@ -7,5 +7,6 @@ namespace ClubAdministration.Core.Contracts
     {
         Member GetMemberById(int id);
         bool HasDublicateMember(Member member);
+        string[] GetAll();
     }
 }
