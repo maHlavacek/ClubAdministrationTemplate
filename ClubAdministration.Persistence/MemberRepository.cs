@@ -32,6 +32,11 @@ namespace ClubAdministration.Persistence
                     .Select(m => m.LastName + " " + m.FirstName)
                     .ToArray();
         }
+
+        public Member GetMemberByName(string lastName, string firstName)
+        {
+            return _dbContext.Members.SingleOrDefault(m => m.LastName == lastName && m.FirstName == firstName);
+        }
     }
 
 }

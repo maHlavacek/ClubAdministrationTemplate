@@ -7,5 +7,7 @@ namespace ClubAdministration.Core.Contracts
     {
         void AddRange(MemberSection[] memberSections);
         MemberDTO[] GetMembersBySectionId(int id);
+
+        string[] GetSectionsByMember(Member member);
     }
 }

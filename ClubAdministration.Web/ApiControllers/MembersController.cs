@@ -1,5 +1,6 @@
 ﻿using System;
 using ClubAdministration.Core.Contracts;
+using ClubAdministration.Core.Entities;
 using ClubAdministration.Persistence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,7 +50,23 @@ namespace ClubAdministration.Web.ApiControllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(string lastName, string firstName)
         {
-            throw new NotImplementedException();
+            if(lastName.Length < 2)
+            {
+                return BadRequest($"{nameof(lastName)} is to short");
+            }
+            if (firstName.Length < 2)
+            {
+                return BadRequest($"{nameof(firstName)} is to short");
+            }
+            Member member = _unitOfWork.MemberRepository.GetMemberByName(lastName, firstName);
+            if(member == null)
+            {
+                return NotFound();
+            }
+
+            var result = _unitOfWork.MemberSectionRepository.GetSectionsByMember(member);
+
+            return Ok(result);
         }
 
     }

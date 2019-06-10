@@ -33,5 +33,15 @@ namespace ClubAdministration.Persistence
                   .OrderBy(o => o.LastName)
                   .ToArray();
         }
+        public string[] GetSectionsByMember(Member member)
+        {
+            return _dbContext
+                    .MemberSections
+                    .Include(I => I.Section)
+                    .Where(s => s.MemberId == member.Id)
+                    .OrderBy(o => o.Section.Name)
+                    .Select(s => s.Section.Name)
+                    .ToArray();
+        }
     }
 }
