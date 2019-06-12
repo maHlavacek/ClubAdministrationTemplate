@@ -80,7 +80,7 @@ namespace ClubAdministration.Persistence
 
             result =_duplicateValidation.GetValidationResult(entity, new ValidationContext(entity));
 
-            if(result != ValidationResult.Success || result != null)
+            if(result != ValidationResult.Success && result != null)
             {
                 throw new ValidationException(result, _duplicateValidation, entity);
             }
